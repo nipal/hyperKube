@@ -135,6 +135,7 @@ int		key_press(int keycode, t_env *e)
 
 
 	(keycode == '`') ? e->key.echap = 1 : (void)keycode;
+	(keycode == 65307) ? e->key.echap = 1 : (void)keycode;
 	(keycode == 125) ? e->key.decal_down = 1 : (void)keycode;
 	(keycode == 126) ? e->key.decal_up = 1 : (void)keycode;
 	(keycode == 124) ? e->key.decal_right = 1 : (void)keycode;
@@ -159,9 +160,9 @@ int		key_press(int keycode, t_env *e)
 
 int		key_release(int keycode, t_env *e)
 {
-//	ft_putchar('[');
-//	ft_putnbr(keycode);
-//	ft_putstr("] ");
+	ft_putchar('[');
+	ft_putnbr(keycode);
+	ft_putstr("] ");
 
 	(keycode == '-') ? e->key.speed_down = 0 : (void)keycode;
 	(keycode == '=') ? e->key.speed_up = 0 : (void)keycode;
@@ -188,6 +189,7 @@ int		key_release(int keycode, t_env *e)
 	(keycode == 'o') ? e->key.rot_cam_z2 = 0 : (void)keycode;
 
 	(keycode == '`') ? e->key.echap = 0 : (void)keycode;
+	(keycode == 65307) ? e->key.echap = 0 : (void)keycode;
 	(keycode == 125) ? e->key.decal_down = 0 : (void)keycode;
 	(keycode == 126) ? e->key.decal_up = 0 : (void)keycode;
 	(keycode == 124) ? e->key.decal_right = 0 : (void)keycode;
