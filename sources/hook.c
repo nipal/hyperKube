@@ -50,6 +50,19 @@ void	init_t_key(t_key *key)
 	key->rot_cam_y2 = 0;
 	key->speed_up = 0;
 	key->speed_down = 0;
+	key->r1 = 0;
+	key->r2 = 0;
+	key->r3 = 0;
+	key->r4 = 0;
+	key->r5 = 0;
+	key->r6 = 0;
+	key->rr1 = 0;
+	key->rr2 = 0;
+	key->rr3 = 0;
+	key->rr4 = 0;
+	key->rr5 = 0;
+	key->rr6 = 0;
+
 }
 
 int		key_press_mac(int keycode, t_env *e)
@@ -99,19 +112,19 @@ int		key_press(int keycode, t_env *e)
 	(keycode == '-') ? e->key.speed_down = 1 : (void)keycode;
 	(keycode == '=') ? e->key.speed_up = 1 : (void)keycode;
 
-	(keycode == 'a') ? e->key.rot_x1 = 1 : (void)keycode;
-	(keycode == 'w') ? e->key.rot_y1 = 1 : (void)keycode;
-	(keycode == 'q') ? e->key.rot_z1 = 1 : (void)keycode;
-	(keycode == 'd') ? e->key.rot_x2 = 1 : (void)keycode;
-	(keycode == 's') ? e->key.rot_y2 = 1 : (void)keycode;
-	(keycode == 'e') ? e->key.rot_z2 = 1 : (void)keycode;
+	(keycode == 'q') ? e->key.r1 = 1 : (void)keycode;
+	(keycode == 'w') ? e->key.r2 = 1 : (void)keycode;
+	(keycode == 'e') ? e->key.r3 = 1 : (void)keycode;
+	(keycode == 'r') ? e->key.r4 = 1 : (void)keycode;
+	(keycode == 't') ? e->key.r5 = 1 : (void)keycode;
+	(keycode == 'y') ? e->key.r6 = 1 : (void)keycode;
 
-	(keycode == 'k') ? e->key.rot_cam_x1 = 1 : (void)keycode;
-	(keycode == 'j') ? e->key.rot_cam_y1 = 1 : (void)keycode;
-	(keycode == 'u') ? e->key.rot_cam_z1 = 1 : (void)keycode;
-	(keycode == 'i') ? e->key.rot_cam_x2 = 1 : (void)keycode;
-	(keycode == 'l') ? e->key.rot_cam_y2 = 1 : (void)keycode;
-	(keycode == 'o') ? e->key.rot_cam_z2 = 1 : (void)keycode;
+	(keycode == 'a') ? e->key.rr1 = 1 : (void)keycode;
+	(keycode == 's') ? e->key.rr2 = 1 : (void)keycode;
+	(keycode == 'd') ? e->key.rr3 = 1 : (void)keycode;
+	(keycode == 'f') ? e->key.rr4 = 1 : (void)keycode;
+	(keycode == 'g') ? e->key.rr5 = 1 : (void)keycode;
+	(keycode == 'h') ? e->key.rr6 = 1 : (void)keycode;
 
 	(keycode == '`') ? e->key.echap = 1 : (void)keycode;
 	(keycode == 125) ? e->key.decal_down = 1 : (void)keycode;
@@ -145,20 +158,19 @@ int		key_release(int keycode, t_env *e)
 	(keycode == '-') ? e->key.speed_down = 0 : (void)keycode;
 	(keycode == '=') ? e->key.speed_up = 0 : (void)keycode;
 
-	(keycode == 'a') ? e->key.rot_x1 = 0 : (void)keycode;
-	(keycode == 'w') ? e->key.rot_y1 = 0 : (void)keycode;
-	(keycode == 'q') ? e->key.rot_z1 = 0 : (void)keycode;
-	(keycode == 'd') ? e->key.rot_x2 = 0 : (void)keycode;
-	(keycode == 's') ? e->key.rot_y2 = 0 : (void)keycode;
-	(keycode == 'e') ? e->key.rot_z2 = 0 : (void)keycode;
+	(keycode == 'q') ? e->key.r1 = 0 : (void)keycode;
+	(keycode == 'w') ? e->key.r2 = 0 : (void)keycode;
+	(keycode == 'e') ? e->key.r3 = 0 : (void)keycode;
+	(keycode == 'r') ? e->key.r4 = 0 : (void)keycode;
+	(keycode == 't') ? e->key.r5 = 0 : (void)keycode;
+	(keycode == 'y') ? e->key.r6 = 0 : (void)keycode;
 
-	(keycode == 'k') ? e->key.rot_cam_x1 = 0 : (void)keycode;
-	(keycode == 'j') ? e->key.rot_cam_y1 = 0 : (void)keycode;
-	(keycode == 'u') ? e->key.rot_cam_z1 = 0 : (void)keycode;
-	(keycode == 'i') ? e->key.rot_cam_x2 = 0 : (void)keycode;
-	(keycode == 'l') ? e->key.rot_cam_y2 = 0 : (void)keycode;
-	(keycode == 'o') ? e->key.rot_cam_z2 = 0 : (void)keycode;
-
+	(keycode == 'a') ? e->key.rr1 = 0 : (void)keycode;
+	(keycode == 's') ? e->key.rr2 = 0 : (void)keycode;
+	(keycode == 'd') ? e->key.rr3 = 0 : (void)keycode;
+	(keycode == 'f') ? e->key.rr4 = 0 : (void)keycode;
+	(keycode == 'g') ? e->key.rr5 = 0 : (void)keycode;
+	(keycode == 'h') ? e->key.rr6 = 0 : (void)keycode;
 
 	(keycode == '`') ? e->key.echap = 0 : (void)keycode;
 	(keycode == 125) ? e->key.decal_down = 0 : (void)keycode;
@@ -248,6 +260,25 @@ void	manage_cam_rot(t_env *e)
 	matrix_free(&mat_rot);
 	matrix_free(&rot);
 }
+
+void	actu_rot(t_env *e, t_key *k)	
+{
+	double	increm = 0.02;
+
+	(k->r1 == 1) ? e->ang[0] += increm : (void)e;
+	(k->r2 == 1) ? e->ang[1] += increm : (void)e;
+	(k->r3 == 1) ? e->ang[2] += increm : (void)e;
+	(k->r4 == 1) ? e->ang[3] += increm : (void)e;
+	(k->r5 == 1) ? e->ang[4] += increm : (void)e;
+	(k->r6 == 1) ? e->ang[5] += increm : (void)e;
+	(k->rr1 == 1) ? e->ang[0] -= increm : (void)e;
+	(k->rr2 == 1) ? e->ang[1] -= increm : (void)e;
+	(k->rr3 == 1) ? e->ang[2] -= increm : (void)e;
+	(k->rr4 == 1) ? e->ang[3] -= increm : (void)e;
+	(k->rr5 == 1) ? e->ang[4] -= increm : (void)e;
+	(k->rr6 == 1) ? e->ang[5] -= increm : (void)e;
+}
+
 //	si 
 int		loop_hook(t_env *e)
 {
@@ -283,6 +314,7 @@ int		loop_hook(t_env *e)
 	(e->key.speed_up == 1) ? e->speed += 1 : (void)e;
 	(e->key.speed_down == 1) ? e->speed -= 1 : (void)e;
 	increm_pos_cam(e);
+	actu_rot(e, &(e->key));
 //	dprintf(1, "speed%f\n", e->speed);
 	ft_bzero(e->data, e->size_line * e->ecr_y);
 	ft_bzero(e->z_buffer, SIZE_X * SIZE_Y * sizeof(double));

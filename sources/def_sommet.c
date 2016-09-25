@@ -126,16 +126,17 @@ void	define_link(t_matrix **vertice)
 	int	id;
 	int	coef;
 
+	dprintf(1, "**************************************************\n");
 	i = 0;
 	while (i < 16)
 	{
 		j = 0;
-		dprintf(1, "point[%d] is linked with:", i);
+		dprintf(1, "point[%d] (%d.%d.%d.%d)is linked with:", i, (!!(i & 8)), (!!(i & 4)), (!!(i & 2)), (!!(i & 1)));
 		while (j < 4)
 		{
 			coef = ((i & (1 << j)) == 0) ? 1 : -1; 
 			id = i + (coef * (1 << j));
-			dprintf(1, "	{%d}", id);
+			dprintf(1, "	{%d:	%d.%d.%d.%d}", id, (!!(id & 8)), (!!(id & 4)), (!!(id & 2)), (!!(id & 1)));
 			(void)vertice;
 			//	il exist un liens entre vertice[i] et vertice[id]
 			j++;
@@ -145,6 +146,16 @@ void	define_link(t_matrix **vertice)
 	}
 }
 
+
+void	conique_adapte(t_matrix *vect)
+{
+	double	norme;
+
+	norme = vect->m[2] / 50;
+	vect->m[0] /= norme;
+	vect->m[1] /= norme;
+}
+
 void	rotate_vertice(t_matrix **vertice, double *ang)
 {
 	int			i;
@@ -152,7 +163,7 @@ void	rotate_vertice(t_matrix **vertice, double *ang)
 	t_matrix	*rot;
 	t_matrix	*tmp;
 
-	if (!vertice || !*vertice || !ang || !(ang_rot = vect_new_horz(ang, 6))
+	if (!vertice || !*vertice || !ang || !(ang_rot = vect_new_vert(ang, 6))
 		|| !(rot = set_rot_4d(ang_rot)))
 		return ;
 	i = 0;
@@ -161,6 +172,7 @@ void	rotate_vertice(t_matrix **vertice, double *ang)
 		if (!(tmp = matrix_product(rot, vertice[i])))
 			return ;
 		matrix_free(vertice + i);
+//		conique_adapte(tmp);
 		vertice[i] = tmp;
 		i++;
 	}

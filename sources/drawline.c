@@ -190,9 +190,49 @@ void	free_vertice(t_matrix ***vertice)
 	}
 }
 
+
+void	draw_link4d(t_env *e, t_matrix **vertice)
+{
+	int	i;
+	int	j;
+	int	id;
+	int	coef;
+	t_matrix	*c1;
+	t_matrix	*c2;
+	t_matrix	*mat_line;
+
+	if (!(c1 = vect_new_vertfd(200, 200, 200)))
+		return ;
+	if (!(c2 = vect_new_vertfd(200, 200, 200)))
+		return ;
+	i = 0;
+	while (i < 16)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			coef = ((i & (1 << j)) == 0) ? 1 : -1; 
+			id = i + (coef * (1 << j));
+			if (!(mat_line = init_mat_line(vertice[i], vertice[id], c1, c2)))
+				;
+			else
+			{
+				draw_line(e, mat_line);
+				matrix_free(&mat_line);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	main_work(t_env *e)
 {
 	e->list_pt = creat_vertice();
 	rotate_vertice(e->list_pt, e->ang);	
+//	define_link(e->list_pt);
+	draw_link4d(e, e->list_pt);
+	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
+	mlx_do_sync(e->mlx);
 	free_vertice(&(e->list_pt));
 }

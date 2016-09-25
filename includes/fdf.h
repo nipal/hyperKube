@@ -63,6 +63,19 @@ typedef struct			s_key
 	int					rot_cam_z2;
 	int					speed_up;
 	int					speed_down;
+	int					r1;
+	int					r2;
+	int					r3;
+	int					r4;
+	int					r5;
+	int					r6;
+	int					rr1;
+	int					rr2;
+	int					rr3;
+	int					rr4;
+	int					rr5;
+	int					rr6;
+
 }						t_key;
 
 
