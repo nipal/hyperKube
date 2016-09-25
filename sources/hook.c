@@ -126,6 +126,14 @@ int		key_press(int keycode, t_env *e)
 	(keycode == 'g') ? e->key.rr5 = 1 : (void)keycode;
 	(keycode == 'h') ? e->key.rr6 = 1 : (void)keycode;
 
+	(keycode == 'j') ? e->key.rot_cam_x1 = 1 : (void)keycode;
+	(keycode == 'i') ? e->key.rot_cam_y1 = 1 : (void)keycode;
+	(keycode == 'u') ? e->key.rot_cam_z1 = 1 : (void)keycode;
+	(keycode == 'l') ? e->key.rot_cam_x2 = 1 : (void)keycode;
+	(keycode == 'k') ? e->key.rot_cam_y2 = 1 : (void)keycode;
+	(keycode == 'o') ? e->key.rot_cam_z2 = 1 : (void)keycode;
+
+
 	(keycode == '`') ? e->key.echap = 1 : (void)keycode;
 	(keycode == 125) ? e->key.decal_down = 1 : (void)keycode;
 	(keycode == 126) ? e->key.decal_up = 1 : (void)keycode;
@@ -171,6 +179,13 @@ int		key_release(int keycode, t_env *e)
 	(keycode == 'f') ? e->key.rr4 = 0 : (void)keycode;
 	(keycode == 'g') ? e->key.rr5 = 0 : (void)keycode;
 	(keycode == 'h') ? e->key.rr6 = 0 : (void)keycode;
+
+	(keycode == 'j') ? e->key.rot_cam_x1 = 0 : (void)keycode;
+	(keycode == 'i') ? e->key.rot_cam_y1 = 0 : (void)keycode;
+	(keycode == 'u') ? e->key.rot_cam_z1 = 0 : (void)keycode;
+	(keycode == 'l') ? e->key.rot_cam_x2 = 0 : (void)keycode;
+	(keycode == 'k') ? e->key.rot_cam_y2 = 0 : (void)keycode;
+	(keycode == 'o') ? e->key.rot_cam_z2 = 0 : (void)keycode;
 
 	(keycode == '`') ? e->key.echap = 0 : (void)keycode;
 	(keycode == 125) ? e->key.decal_down = 0 : (void)keycode;
@@ -232,31 +247,40 @@ void	manage_cam_rot(t_env *e)
 	(void)tmp;
 	static	double	deg = 0.03;
 
-	if (!(rot = matrix_init(1, 3)))
+	if (!(rot = matrix_init(1, 4)))
 		return ;
-	if (e->key.rot_cam_z2)
+	if (e->key.rot_cam_z2)// && dprintf(1, "z2\n"))
 		rot->m[2] -= deg;
-	if (e->key.rot_cam_z1)
+	if (e->key.rot_cam_z1)// && dprintf(1, "z1\n"))
 		rot->m[2] += deg;
-	if (e->key.rot_cam_x2)
+	if (e->key.rot_cam_x2)// && dprintf(1, "x2\n"))
 		rot->m[0] -= deg;
-	if (e->key.rot_cam_x1)
+	if (e->key.rot_cam_x1)// && dprintf(1, "x1\n"))
 		rot->m[0] += deg;
-	if (e->key.rot_cam_y2)
+	if (e->key.rot_cam_y2)// && dprintf(1, "y2\n"))
 		rot->m[1] -= deg;
-	if (e->key.rot_cam_y1)
+	if (e->key.rot_cam_y1)// && dprintf(1, "y1\n"))
 		rot->m[1] += deg;
 	if (!(mat_rot = set_rotate(rot->m[0], rot->m[1], rot->m[2])))
 		return ;
 	i = 0;
 	while (i < 3)
 	{
+
+//	dprintf(1, "*******\n");
+//	matrix_display(mat_rot);
+//	dprintf(1, "$$$$$$$\n");
+	e->cam->base[i]->y = 3;
+//	matrix_display(e->cam->base[i]);
 		if (!(tmp = matrix_product(mat_rot, e->cam->base[i])))
 			return ;
 		matrix_free(e->cam->base + i);
-		e->cam->base[i] = tmp;
+		e->cam->base[i] = matrix_put_in_new(tmp->m[0], tmp->m[1], tmp->m[2], 0);
 		i++;
 	}
+	matrix_add_in(rot, e->cam->rot, e->cam->rot);
+//	dprintf(1, "*******\n");
+//	matrix_display(rot);
 	matrix_free(&mat_rot);
 	matrix_free(&rot);
 }
@@ -285,12 +309,12 @@ int		loop_hook(t_env *e)
 	static	double	increm = 0.03;
 	
 //	dprintf(1, "x:%f y:%f x:%f\n", e->rot_x, e->rot_y, e->rot_z);
-	(e->key.rot_z2 == 1) ? e->rot_z -= increm : (void)e;
-	(e->key.rot_y2 == 1) ? e->rot_y -= increm : (void)e;
-	(e->key.rot_x2 == 1) ? e->rot_x -= increm : (void)e;
-	(e->key.rot_x1 == 1) ? e->rot_x += increm : (void)e;
-	(e->key.rot_y1 == 1) ? e->rot_y += increm : (void)e;
-	(e->key.rot_z1 == 1) ? e->rot_z += increm : (void)e;
+	(e->key.rot_cam_z2 == 1) ? e->rot_z -= increm : (void)e;
+	(e->key.rot_cam_y2 == 1) ? e->rot_y -= increm : (void)e;
+	(e->key.rot_cam_x2 == 1) ? e->rot_x -= increm : (void)e;
+	(e->key.rot_cam_x1 == 1) ? e->rot_x += increm : (void)e;
+	(e->key.rot_cam_y1 == 1) ? e->rot_y += increm : (void)e;
+	(e->key.rot_cam_z1 == 1) ? e->rot_z += increm : (void)e;
 
 	manage_cam_rot(e);
 

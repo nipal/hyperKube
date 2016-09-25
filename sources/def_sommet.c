@@ -161,11 +161,16 @@ void	rotate_vertice(t_matrix **vertice, double *ang, t_cam *cam)
 	int			i;
 	t_matrix	*ang_rot;
 	t_matrix	*rot;
+	t_matrix	*rot_cam;
 	t_matrix	*tmp;
+	t_matrix	*tmp2;
 
 	if (!vertice || !*vertice || !ang || !(ang_rot = vect_new_vert(ang, 6))
-		|| !(rot = set_rot_4d(ang_rot)))
+		|| !(rot = set_rot_4d(ang_rot))
+		|| !(rot_cam = set_rotate(cam->rot->m[0], cam->rot->m[1], cam->rot->m[1])))
 		return ;
+//dprintf(1, "*******\n");
+//	matrix_display(cam->rot);
 	i = 0;
 	while (i < 16)
 	{
@@ -173,8 +178,13 @@ void	rotate_vertice(t_matrix **vertice, double *ang, t_cam *cam)
 			return ;
 		matrix_free(vertice + i);
 		matrix_sub_in(tmp, cam->pos, tmp);
-		conique_adapte(tmp);
-		vertice[i] = tmp;
+		//	ici il faudrait faire la rotation
+		tmp->y = 3;
+		tmp2 = matrix_product(rot_cam, tmp);
+		conique_adapte(tmp2);
+//	matrix_display(tmp2);
+		matrix_free(&tmp);
+		vertice[i] = tmp2;
 		i++;
 	}
 	matrix_free(&ang_rot);

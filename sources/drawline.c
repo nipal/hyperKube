@@ -191,6 +191,13 @@ void	free_vertice(t_matrix ***vertice)
 }
 
 
+int		they_out(t_matrix *p1, t_matrix *p2)
+{
+	if (!p1 || !p2 || p1->m[2] < 0 || p2->m[2] < 10)
+		return (1);
+	return (0);
+}
+
 void	draw_link4d(t_env *e, t_matrix **vertice)
 {
 	int	i;
@@ -213,7 +220,8 @@ void	draw_link4d(t_env *e, t_matrix **vertice)
 		{
 			coef = ((i & (1 << j)) == 0) ? 1 : -1; 
 			id = i + (coef * (1 << j));
-			if (!(mat_line = init_mat_line(vertice[i], vertice[id], c1, c2)))
+			if (they_out(vertice[i], vertice[id])
+				|| !(mat_line = init_mat_line(vertice[i], vertice[id], c1, c2)))
 				;
 			else
 			{

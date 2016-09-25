@@ -45,7 +45,10 @@ t_matrix	*matrix_add_in(t_matrix *a, t_matrix *b, t_matrix *c)
 	if (!a || !b || !c)
 		return (NULL);
 	if (a->x != b->x || a->y != b->y)
+	{
+		dprintf(1, "size error\n");
 		return (NULL);
+	}
 	c->x = a->x;
 	c->y = a->y;
 	size = c->x * c->y;

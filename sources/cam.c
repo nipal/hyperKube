@@ -168,7 +168,7 @@ t_matrix	**init_base()
 	i = 0;
 	while (i < 3)
 	{
-		if (!(base[i] = vect_new_vertfd(i == 0, i == 1, i == 2)))
+		if (!(base[i] = matrix_put_in_new(i == 0, i == 1, i == 2, 0)))
 			return (NULL);
 		i++;
 	}
@@ -226,13 +226,14 @@ t_cam	*init_cam(double fov_y, double fov_x, t_env *e)
 //	dy_cam = tan(fov_y / 2);
 //	dir = matrix_product(rot, c->dir);
 //	dir = matrix_scalar_product(dir, 0.01 * e->speed);
-	c->pos->m[Z] = -200 ;//- MAX(((e->size_map_y * marge) / dy_cam), (e->size_map_x * marge) / dx_cam);
+	c->pos->m[Z] = -250 ;//- MAX(((e->size_map_y * marge) / dy_cam), (e->size_map_x * marge) / dx_cam);
 	c->pos->m[X] = 0;
 	c->pos->m[Y] = 0;
 	
-	c->rot->m[0] = e->rot_x;
-	c->rot->m[1] = e->rot_y;
-	c->rot->m[2] = e->rot_z;
+	c->rot->m[0] = 0;//e->rot_x;
+	c->rot->m[1] = 0;//e->rot_y;
+	c->rot->m[2] = 0;//e->rot_z;
+	(void)e;
 
 	set_windir(c->corner, fov_x, fov_y);
 //	set_normal(c->base, c->corner);

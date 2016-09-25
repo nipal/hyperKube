@@ -43,7 +43,7 @@ void	vectpx_to_img(t_env *e, t_matrix *pos_color)
 	y = (int) pos_color->m[1];
 	x += SIZE_Y / 2;
 	y += SIZE_X / 2;
-	if ( x < 0 || x >= e->ecr_x || y < 0 || y >= e->ecr_y)// || pos_color->m[2] < 0
+	if ( x < 0 || x >= e->ecr_x || y < 0 || y >= e->ecr_y || pos_color->m[2] < 0)
 	//	|| (pos_color->m[2] >= e->z_buffer[x + y * e->ecr_x] && e->z_buffer[x + y * e->ecr_x]))
 	{
 //		dprintf(1, "x_max:%d y_max:%d\n", e->size_line  / 4, 990);
