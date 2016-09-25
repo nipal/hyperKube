@@ -151,12 +151,12 @@ void	conique_adapte(t_matrix *vect)
 {
 	double	norme;
 
-	norme = vect->m[2] / 50;
+	norme = vect->m[2] / 200;
 	vect->m[0] /= norme;
 	vect->m[1] /= norme;
 }
 
-void	rotate_vertice(t_matrix **vertice, double *ang)
+void	rotate_vertice(t_matrix **vertice, double *ang, t_cam *cam)
 {
 	int			i;
 	t_matrix	*ang_rot;
@@ -172,7 +172,8 @@ void	rotate_vertice(t_matrix **vertice, double *ang)
 		if (!(tmp = matrix_product(rot, vertice[i])))
 			return ;
 		matrix_free(vertice + i);
-//		conique_adapte(tmp);
+		matrix_sub_in(tmp, cam->pos, tmp);
+		conique_adapte(tmp);
 		vertice[i] = tmp;
 		i++;
 	}

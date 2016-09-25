@@ -201,9 +201,9 @@ t_cam	*init_cam(double fov_y, double fov_x, t_env *e)
 //	ft_putstr("On re cree une cam youuoyuyouhouhohu\n");
 	c = (t_cam*) malloc(sizeof(t_cam));
 	if (!c || fov_y <= 0 || fov_y >= 180 || fov_y > 180 || fov_y < 0 
-		|| !(c->dir = vect_new_vertfd(0, 0, 1))
-		|| !(c->rot =  vect_new_vertfd(0, 0, 0))
-		|| !(c->pos =  vect_new_vertfd(0, 0, 0))
+		|| !(c->dir = matrix_put_in_new(0, 0, 1, 0))
+		|| !(c->rot =  matrix_put_in_new(0, 0, 0, 0))
+		|| !(c->pos =  matrix_put_in_new(0, 0, 0, 0))
 		|| !(c->corner = (t_matrix**)malloc(sizeof(t_cam*) * 4))
 		|| !(c->base = init_base()))
 	{
@@ -226,7 +226,7 @@ t_cam	*init_cam(double fov_y, double fov_x, t_env *e)
 //	dy_cam = tan(fov_y / 2);
 //	dir = matrix_product(rot, c->dir);
 //	dir = matrix_scalar_product(dir, 0.01 * e->speed);
-	c->pos->m[Z] = -1000 ;//- MAX(((e->size_map_y * marge) / dy_cam), (e->size_map_x * marge) / dx_cam);
+	c->pos->m[Z] = -200 ;//- MAX(((e->size_map_y * marge) / dy_cam), (e->size_map_x * marge) / dx_cam);
 	c->pos->m[X] = 0;
 	c->pos->m[Y] = 0;
 	

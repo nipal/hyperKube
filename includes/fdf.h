@@ -202,6 +202,6 @@ int						free_rotation_4d(t_matrix **rot);
 t_matrix				*set_rot_4d(t_matrix *angle);
 t_matrix				**creat_vertice();
 void					define_link(t_matrix **vertice);
-void					rotate_vertice(t_matrix **vertice, double *ang);
+void					rotate_vertice(t_matrix **vertice, double *ang, t_cam *cam);
 
 #endif

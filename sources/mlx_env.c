@@ -36,7 +36,9 @@ void	vectpx_to_img(t_env *e, t_matrix *pos_color)
 	int	r;
 	int	g;
 	int	b;
+	double	coef;
 
+	coef = 1;
 	x = (int) pos_color->m[0];
 	y = (int) pos_color->m[1];
 	x += SIZE_Y / 2;
@@ -48,10 +50,20 @@ void	vectpx_to_img(t_env *e, t_matrix *pos_color)
 //		dprintf(1, "out of window x:%d y:%d\n", x, y);
 		return ;
 	}
+	if (pos_color->m[2] != 0)
+	{
+		coef =  pos_color->m[2] / 300;
+	}
 	e->z_buffer[x + y * e->ecr_x] = pos_color->m[2];
-	r = (int) pos_color->m[3] + 0.5;
-	g = (int) pos_color->m[4] + 0.5;
-	b = (int) pos_color->m[5] + 0.5;
+	r = (int) ((pos_color->m[3] + 0.5)) / (coef);
+	g = (int) ((pos_color->m[4] + 0.5)) / coef;
+	b = (int) ((pos_color->m[5] + 0.5)) / coef;
+	r = (r > 255) ? 255 : r;
+	g = (g > 255) ? 255 : g;
+	b = (b > 255) ? 255 : b;
+	r = (r < 0) ? 0 : r;
+	g = (g < 0) ? 0 : g;
+	b = (b < 0) ? 0 : b;
 	e->data[y * e->size_line + x * 4 + 2] = r;
 	e->data[y * e->size_line + x * 4 + 1] = g;
 	e->data[y * e->size_line + x * 4] = b;

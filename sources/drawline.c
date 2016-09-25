@@ -201,9 +201,9 @@ void	draw_link4d(t_env *e, t_matrix **vertice)
 	t_matrix	*c2;
 	t_matrix	*mat_line;
 
-	if (!(c1 = vect_new_vertfd(200, 200, 200)))
+	if (!(c1 = vect_new_vertfd(100, 100, 100)))
 		return ;
-	if (!(c2 = vect_new_vertfd(200, 200, 200)))
+	if (!(c2 = vect_new_vertfd(100, 100, 100)))
 		return ;
 	i = 0;
 	while (i < 16)
@@ -229,7 +229,7 @@ void	draw_link4d(t_env *e, t_matrix **vertice)
 void	main_work(t_env *e)
 {
 	e->list_pt = creat_vertice();
-	rotate_vertice(e->list_pt, e->ang);	
+	rotate_vertice(e->list_pt, e->ang, e->cam);	
 //	define_link(e->list_pt);
 	draw_link4d(e, e->list_pt);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
