@@ -315,7 +315,7 @@ void	manage_cam_rot(t_env *e)
 
 void	actu_rot(t_env *e, t_key *k)	
 {
-	double	increm = 0.005;
+	double	increm = 0.015;
 
 	(k->r1 == 1) ? e->ang[0] += increm : (void)e;
 	(k->r2 == 1) ? e->ang[1] += increm : (void)e;
