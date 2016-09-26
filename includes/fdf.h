@@ -69,12 +69,20 @@ typedef struct			s_key
 	int					r4;
 	int					r5;
 	int					r6;
+	int					r7;
+	int					r8;
+	int					r9;
+	int					r10;
 	int					rr1;
 	int					rr2;
 	int					rr3;
 	int					rr4;
 	int					rr5;
 	int					rr6;
+	int					rr7;
+	int					rr8;
+	int					rr9;
+	int					rr10;
 
 }						t_key;
 
@@ -123,7 +131,8 @@ typedef struct			s_env
 	double				speed;
 	t_cam				*cam;
 	t_matrix			**list_pt;
-	double				ang[6];
+	double				ang[100];
+	int					deg;
 }						t_env;
 
 typedef struct			s_point
@@ -153,7 +162,7 @@ void					vectpx_to_img(t_env *e, t_matrix *pos_color);
 void					print_state(t_env *e);
 
 //	Fonction preparant l'env et qui lance le loop hook
-void					env();
+void					env(int deg);
 /*
 ** coord
 */
@@ -203,5 +212,16 @@ t_matrix				*set_rot_4d(t_matrix *angle);
 t_matrix				**creat_vertice();
 void					define_link(t_matrix **vertice);
 void					rotate_vertice(t_matrix **vertice, double *ang, t_cam *cam);
+
+
+t_matrix	*set_one_rot_degn(int c1, int c2, double ang, int deg);
+t_matrix	**get_the_rot_degn(t_matrix *angle, int deg);
+int			free_rotation_degn(t_matrix **rot, int deg);
+t_matrix	*set_rot_degn(t_matrix *angle, int deg);
+t_matrix	**creat_vertice_degn(int deg);
+void		define_link_degn(t_matrix **vertice, int deg);
+void		rotate_vertice_degn(t_matrix **vertice, double *ang, t_cam *cam, int deg);
+void		draw_link_degn(t_env *e, t_matrix **vertice, int deg);
+void	free_vertice_degn(t_matrix ***vertice, int deg);
 
 #endif

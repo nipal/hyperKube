@@ -11,11 +11,11 @@
 # **************************************************************************** #
 
 NAME	=	../hyperKube
-SRC		=	def_sommet.c	\
-			drawline.c		\
+SRC		=	drawline.c		\
 			hook.c			\
 			main.c			\
 			cam.c			\
+			hyperKube_degn.c \
 			mlx_env.c
 
 OBJ		= $(SRC:.c=.o)

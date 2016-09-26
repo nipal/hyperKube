@@ -21,7 +21,10 @@ t_matrix	*matrix_add(t_matrix *a, t_matrix *b)
 	if (!a || !b)
 		return (NULL);
 	if (a->x != b->x || a->y != b->y)
+	{
+		ft_putstr("error dim matrix_add\n");
 		return (NULL);
+	}
 	if ((!(c = matrix_init(a->x, a->y))))
 		return (NULL);
 	c->x = a->x;
@@ -46,7 +49,7 @@ t_matrix	*matrix_add_in(t_matrix *a, t_matrix *b, t_matrix *c)
 		return (NULL);
 	if (a->x != b->x || a->y != b->y)
 	{
-		dprintf(1, "size error\n");
+		ft_putstr("error dim matrix_add_in\n");
 		return (NULL);
 	}
 	c->x = a->x;

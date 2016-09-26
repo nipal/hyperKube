@@ -191,13 +191,7 @@ void	free_vertice(t_matrix ***vertice)
 }
 
 
-int		they_out(t_matrix *p1, t_matrix *p2)
-{
-	if (!p1 || !p2 || p1->m[2] < 0 || p2->m[2] < 10)
-		return (1);
-	return (0);
-}
-
+/*
 void	draw_link4d(t_env *e, t_matrix **vertice)
 {
 	int	i;
@@ -233,14 +227,20 @@ void	draw_link4d(t_env *e, t_matrix **vertice)
 		i++;
 	}
 }
-
+*/
 void	main_work(t_env *e)
 {
-	e->list_pt = creat_vertice();
-	rotate_vertice(e->list_pt, e->ang, e->cam);	
+	e->list_pt = creat_vertice_degn(e->deg);
+	rotate_vertice_degn(e->list_pt, e->ang, e->cam, e->deg);	
+//	define_link_degn(e->list_pt, e->deg);
+	draw_link_degn(e, e->list_pt, e->deg);
+	free_vertice_degn(&(e->list_pt), e->deg);
+
+//	e->list_pt = creat_vertice();
+//	rotate_vertice(e->list_pt, e->ang, e->cam);	
 //	define_link(e->list_pt);
-	draw_link4d(e, e->list_pt);
+//	draw_link4d(e, e->list_pt);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 	mlx_do_sync(e->mlx);
-	free_vertice(&(e->list_pt));
+//	free_vertice(&(e->list_pt));
 }

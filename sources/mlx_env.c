@@ -107,11 +107,14 @@ void	print_state(t_env *e)
 /*	ici il faudrait stoquer les dimetion maximale de la map
  * 	on a deja le max x et y il maque le max et le min en z*/
 
-void	env()
+void	env(int deg)
 {
 	t_env	e;
 	t_cam	*cam;
 
+	e.deg = deg;
+//	if (!(e.ang = (double*)malloc(sizeof(double) * deg)))
+//		return ;
 	e.rot_x = (20.0 / 360.0)  * 2 * M_PI;
 	e.rot_y = (20.0 / 360.0) * 2 * M_PI;
 	e.rot_z = (0.0 / 360.0) * 2 * M_PI;

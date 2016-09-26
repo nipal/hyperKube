@@ -14,8 +14,11 @@
 #include "libft.h"
 #include "fdf.h"
 
-int		main(void)
+int		main(int ac, char **av)
 {
-		env();
-		return (0);
+	if (ac == 2)
+		env(ft_atoi(av[1]));
+	else
+		env(4);
+	return (0);
 }

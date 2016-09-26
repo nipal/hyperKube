@@ -56,12 +56,20 @@ void	init_t_key(t_key *key)
 	key->r4 = 0;
 	key->r5 = 0;
 	key->r6 = 0;
+	key->r7 = 0;
+	key->r8 = 0;
+	key->r9 = 0;
+	key->r10 = 0;
 	key->rr1 = 0;
 	key->rr2 = 0;
 	key->rr3 = 0;
 	key->rr4 = 0;
 	key->rr5 = 0;
 	key->rr6 = 0;
+	key->rr7 = 0;
+	key->rr8 = 0;
+	key->rr9 = 0;
+	key->rr10 = 0;
 
 }
 
@@ -118,6 +126,10 @@ int		key_press(int keycode, t_env *e)
 	(keycode == 'r') ? e->key.r4 = 1 : (void)keycode;
 	(keycode == 't') ? e->key.r5 = 1 : (void)keycode;
 	(keycode == 'y') ? e->key.r6 = 1 : (void)keycode;
+	(keycode == 'u') ? e->key.r7 = 1 : (void)keycode;
+	(keycode == 'i') ? e->key.r8 = 1 : (void)keycode;
+	(keycode == 'o') ? e->key.r9 = 1 : (void)keycode;
+	(keycode == 'p') ? e->key.r10 = 1 : (void)keycode;
 
 	(keycode == 'a') ? e->key.rr1 = 1 : (void)keycode;
 	(keycode == 's') ? e->key.rr2 = 1 : (void)keycode;
@@ -125,14 +137,19 @@ int		key_press(int keycode, t_env *e)
 	(keycode == 'f') ? e->key.rr4 = 1 : (void)keycode;
 	(keycode == 'g') ? e->key.rr5 = 1 : (void)keycode;
 	(keycode == 'h') ? e->key.rr6 = 1 : (void)keycode;
+	(keycode == 'j') ? e->key.rr7 = 1 : (void)keycode;
+	(keycode == 'k') ? e->key.rr8 = 1 : (void)keycode;
+	(keycode == 'l') ? e->key.rr9 = 1 : (void)keycode;
+	(keycode == ';') ? e->key.rr10 = 1 : (void)keycode;
 
+/*
 	(keycode == 'j') ? e->key.rot_cam_x1 = 1 : (void)keycode;
 	(keycode == 'i') ? e->key.rot_cam_y1 = 1 : (void)keycode;
 	(keycode == 'u') ? e->key.rot_cam_z1 = 1 : (void)keycode;
 	(keycode == 'l') ? e->key.rot_cam_x2 = 1 : (void)keycode;
 	(keycode == 'k') ? e->key.rot_cam_y2 = 1 : (void)keycode;
 	(keycode == 'o') ? e->key.rot_cam_z2 = 1 : (void)keycode;
-
+*/
 
 	(keycode == '`') ? e->key.echap = 1 : (void)keycode;
 	(keycode == 65307) ? e->key.echap = 1 : (void)keycode;
@@ -160,12 +177,13 @@ int		key_press(int keycode, t_env *e)
 
 int		key_release(int keycode, t_env *e)
 {
-	ft_putchar('[');
-	ft_putnbr(keycode);
-	ft_putstr("] ");
+//	ft_putchar('[');
+//	ft_putnbr(keycode);
+//	ft_putstr("] ");
 
 	(keycode == '-') ? e->key.speed_down = 0 : (void)keycode;
 	(keycode == '=') ? e->key.speed_up = 0 : (void)keycode;
+
 
 	(keycode == 'q') ? e->key.r1 = 0 : (void)keycode;
 	(keycode == 'w') ? e->key.r2 = 0 : (void)keycode;
@@ -173,6 +191,10 @@ int		key_release(int keycode, t_env *e)
 	(keycode == 'r') ? e->key.r4 = 0 : (void)keycode;
 	(keycode == 't') ? e->key.r5 = 0 : (void)keycode;
 	(keycode == 'y') ? e->key.r6 = 0 : (void)keycode;
+	(keycode == 'u') ? e->key.r7 = 0 : (void)keycode;
+	(keycode == 'i') ? e->key.r8 = 0 : (void)keycode;
+	(keycode == 'o') ? e->key.r9 = 0 : (void)keycode;
+	(keycode == 'p') ? e->key.r10 = 0 : (void)keycode;
 
 	(keycode == 'a') ? e->key.rr1 = 0 : (void)keycode;
 	(keycode == 's') ? e->key.rr2 = 0 : (void)keycode;
@@ -180,14 +202,18 @@ int		key_release(int keycode, t_env *e)
 	(keycode == 'f') ? e->key.rr4 = 0 : (void)keycode;
 	(keycode == 'g') ? e->key.rr5 = 0 : (void)keycode;
 	(keycode == 'h') ? e->key.rr6 = 0 : (void)keycode;
-
+	(keycode == 'j') ? e->key.rr7 = 0 : (void)keycode;
+	(keycode == 'k') ? e->key.rr8 = 0 : (void)keycode;
+	(keycode == 'l') ? e->key.rr9 = 0 : (void)keycode;
+	(keycode == ';') ? e->key.rr10 = 0 : (void)keycode;
+/*
 	(keycode == 'j') ? e->key.rot_cam_x1 = 0 : (void)keycode;
 	(keycode == 'i') ? e->key.rot_cam_y1 = 0 : (void)keycode;
 	(keycode == 'u') ? e->key.rot_cam_z1 = 0 : (void)keycode;
 	(keycode == 'l') ? e->key.rot_cam_x2 = 0 : (void)keycode;
 	(keycode == 'k') ? e->key.rot_cam_y2 = 0 : (void)keycode;
 	(keycode == 'o') ? e->key.rot_cam_z2 = 0 : (void)keycode;
-
+*/
 	(keycode == '`') ? e->key.echap = 0 : (void)keycode;
 	(keycode == 65307) ? e->key.echap = 0 : (void)keycode;
 	(keycode == 125) ? e->key.decal_down = 0 : (void)keycode;
@@ -289,7 +315,7 @@ void	manage_cam_rot(t_env *e)
 
 void	actu_rot(t_env *e, t_key *k)	
 {
-	double	increm = 0.015;
+	double	increm = 0.005;
 
 	(k->r1 == 1) ? e->ang[0] += increm : (void)e;
 	(k->r2 == 1) ? e->ang[1] += increm : (void)e;
@@ -297,12 +323,20 @@ void	actu_rot(t_env *e, t_key *k)
 	(k->r4 == 1) ? e->ang[3] += increm : (void)e;
 	(k->r5 == 1) ? e->ang[4] += increm : (void)e;
 	(k->r6 == 1) ? e->ang[5] += increm : (void)e;
+	(k->r7 == 1) ? e->ang[6] += increm : (void)e;
+	(k->r8 == 1) ? e->ang[7] += increm : (void)e;
+	(k->r9 == 1) ? e->ang[8] += increm : (void)e;
+	(k->r10 == 1) ? e->ang[9] += increm : (void)e;
 	(k->rr1 == 1) ? e->ang[0] -= increm : (void)e;
 	(k->rr2 == 1) ? e->ang[1] -= increm : (void)e;
 	(k->rr3 == 1) ? e->ang[2] -= increm : (void)e;
 	(k->rr4 == 1) ? e->ang[3] -= increm : (void)e;
 	(k->rr5 == 1) ? e->ang[4] -= increm : (void)e;
 	(k->rr6 == 1) ? e->ang[5] -= increm : (void)e;
+	(k->rr7 == 1) ? e->ang[6] -= increm : (void)e;
+	(k->rr8 == 1) ? e->ang[7] -= increm : (void)e;
+	(k->rr9 == 1) ? e->ang[8] -= increm : (void)e;
+	(k->rr10 == 1) ? e->ang[9] -= increm : (void)e;
 }
 
 //	si 
