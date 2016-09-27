@@ -6,7 +6,7 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 12:17:52 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/09/18 10:24:03 by fjanoty          ###   ########.fr       */
+/*   Updated: 2016/09/27 04:31:44 by fjanoty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,27 +120,28 @@ int		key_press(int keycode, t_env *e)
 	(keycode == '-') ? e->key.speed_down = 1 : (void)keycode;
 	(keycode == '=') ? e->key.speed_up = 1 : (void)keycode;
 
-	(keycode == 'q') ? e->key.r1 = 1 : (void)keycode;
-	(keycode == 'w') ? e->key.r2 = 1 : (void)keycode;
-	(keycode == 'e') ? e->key.r3 = 1 : (void)keycode;
-	(keycode == 'r') ? e->key.r4 = 1 : (void)keycode;
-	(keycode == 't') ? e->key.r5 = 1 : (void)keycode;
-	(keycode == 'y') ? e->key.r6 = 1 : (void)keycode;
-	(keycode == 'u') ? e->key.r7 = 1 : (void)keycode;
-	(keycode == 'i') ? e->key.r8 = 1 : (void)keycode;
-	(keycode == 'o') ? e->key.r9 = 1 : (void)keycode;
-	(keycode == 'p') ? e->key.r10 = 1 : (void)keycode;
 
-	(keycode == 'a') ? e->key.rr1 = 1 : (void)keycode;
-	(keycode == 's') ? e->key.rr2 = 1 : (void)keycode;
-	(keycode == 'd') ? e->key.rr3 = 1 : (void)keycode;
-	(keycode == 'f') ? e->key.rr4 = 1 : (void)keycode;
-	(keycode == 'g') ? e->key.rr5 = 1 : (void)keycode;
-	(keycode == 'h') ? e->key.rr6 = 1 : (void)keycode;
-	(keycode == 'j') ? e->key.rr7 = 1 : (void)keycode;
-	(keycode == 'k') ? e->key.rr8 = 1 : (void)keycode;
-	(keycode == 'l') ? e->key.rr9 = 1 : (void)keycode;
-	(keycode == ';') ? e->key.rr10 = 1 : (void)keycode;
+	(keycode == 12) ? e->key.r1 = 1 : (void)keycode;
+	(keycode == 13) ? e->key.r2 = 1 : (void)keycode;
+	(keycode == 14) ? e->key.r3 = 1 : (void)keycode;
+	(keycode == 15) ? e->key.r4 = 1 : (void)keycode;
+	(keycode == 17) ? e->key.r5 = 1 : (void)keycode;
+	(keycode == 16) ? e->key.r6 = 1 : (void)keycode;
+	(keycode == 32) ? e->key.r7 = 1 : (void)keycode;
+	(keycode == 34) ? e->key.r8 = 1 : (void)keycode;
+	(keycode == 31) ? e->key.r9 = 1 : (void)keycode;
+	(keycode == 35) ? e->key.r10 = 1 : (void)keycode;
+
+	(keycode == 0) ? e->key.rr1 = 1 : (void)keycode;
+	(keycode == 1) ? e->key.rr2 = 1 : (void)keycode;
+	(keycode == 2) ? e->key.rr3 = 1 : (void)keycode;
+	(keycode == 3) ? e->key.rr4 = 1 : (void)keycode;
+	(keycode == 5) ? e->key.rr5 = 1 : (void)keycode;
+	(keycode == 4) ? e->key.rr6 = 1 : (void)keycode;
+	(keycode == 38) ? e->key.rr7 = 1 : (void)keycode;
+	(keycode == 40) ? e->key.rr8 = 1 : (void)keycode;
+	(keycode == 37) ? e->key.rr9 = 1 : (void)keycode;
+	(keycode == 41) ? e->key.rr10 = 1 : (void)keycode;
 
 /*
 	(keycode == 'j') ? e->key.rot_cam_x1 = 1 : (void)keycode;
@@ -153,6 +154,7 @@ int		key_press(int keycode, t_env *e)
 
 	(keycode == '`') ? e->key.echap = 1 : (void)keycode;
 	(keycode == 65307) ? e->key.echap = 1 : (void)keycode;
+	(keycode == 53) ? e->key.echap = 1 : (void)keycode;
 	(keycode == 125) ? e->key.decal_down = 1 : (void)keycode;
 	(keycode == 126) ? e->key.decal_up = 1 : (void)keycode;
 	(keycode == 124) ? e->key.decal_right = 1 : (void)keycode;
@@ -177,35 +179,35 @@ int		key_press(int keycode, t_env *e)
 
 int		key_release(int keycode, t_env *e)
 {
-//	ft_putchar('[');
-//	ft_putnbr(keycode);
-//	ft_putstr("] ");
+	ft_putchar('[');
+	ft_putnbr(keycode);
+	ft_putstr("] ");
 
 	(keycode == '-') ? e->key.speed_down = 0 : (void)keycode;
 	(keycode == '=') ? e->key.speed_up = 0 : (void)keycode;
 
 
-	(keycode == 'q') ? e->key.r1 = 0 : (void)keycode;
-	(keycode == 'w') ? e->key.r2 = 0 : (void)keycode;
-	(keycode == 'e') ? e->key.r3 = 0 : (void)keycode;
-	(keycode == 'r') ? e->key.r4 = 0 : (void)keycode;
-	(keycode == 't') ? e->key.r5 = 0 : (void)keycode;
-	(keycode == 'y') ? e->key.r6 = 0 : (void)keycode;
-	(keycode == 'u') ? e->key.r7 = 0 : (void)keycode;
-	(keycode == 'i') ? e->key.r8 = 0 : (void)keycode;
-	(keycode == 'o') ? e->key.r9 = 0 : (void)keycode;
-	(keycode == 'p') ? e->key.r10 = 0 : (void)keycode;
+	(keycode == 12) ? e->key.r1 = 0 : (void)keycode;
+	(keycode == 13) ? e->key.r2 = 0 : (void)keycode;
+	(keycode == 14) ? e->key.r3 = 0 : (void)keycode;
+	(keycode == 15) ? e->key.r4 = 0 : (void)keycode;
+	(keycode == 17) ? e->key.r5 = 0 : (void)keycode;
+	(keycode == 16) ? e->key.r6 = 0 : (void)keycode;
+	(keycode == 32) ? e->key.r7 = 0 : (void)keycode;
+	(keycode == 34) ? e->key.r8 = 0 : (void)keycode;
+	(keycode == 31) ? e->key.r9 = 0 : (void)keycode;
+	(keycode == 35) ? e->key.r10 = 0 : (void)keycode;
 
-	(keycode == 'a') ? e->key.rr1 = 0 : (void)keycode;
-	(keycode == 's') ? e->key.rr2 = 0 : (void)keycode;
-	(keycode == 'd') ? e->key.rr3 = 0 : (void)keycode;
-	(keycode == 'f') ? e->key.rr4 = 0 : (void)keycode;
-	(keycode == 'g') ? e->key.rr5 = 0 : (void)keycode;
-	(keycode == 'h') ? e->key.rr6 = 0 : (void)keycode;
-	(keycode == 'j') ? e->key.rr7 = 0 : (void)keycode;
-	(keycode == 'k') ? e->key.rr8 = 0 : (void)keycode;
-	(keycode == 'l') ? e->key.rr9 = 0 : (void)keycode;
-	(keycode == ';') ? e->key.rr10 = 0 : (void)keycode;
+	(keycode == 0) ? e->key.rr1 = 0 : (void)keycode;
+	(keycode == 1) ? e->key.rr2 = 0 : (void)keycode;
+	(keycode == 2) ? e->key.rr3 = 0 : (void)keycode;
+	(keycode == 3) ? e->key.rr4 = 0 : (void)keycode;
+	(keycode == 5) ? e->key.rr5 = 0 : (void)keycode;
+	(keycode == 4) ? e->key.rr6 = 0 : (void)keycode;
+	(keycode == 38) ? e->key.rr7 = 0 : (void)keycode;
+	(keycode == 40) ? e->key.rr8 = 0 : (void)keycode;
+	(keycode == 37) ? e->key.rr9 = 0 : (void)keycode;
+	(keycode == 41) ? e->key.rr10 = 0 : (void)keycode;
 /*
 	(keycode == 'j') ? e->key.rot_cam_x1 = 0 : (void)keycode;
 	(keycode == 'i') ? e->key.rot_cam_y1 = 0 : (void)keycode;
@@ -216,6 +218,7 @@ int		key_release(int keycode, t_env *e)
 */
 	(keycode == '`') ? e->key.echap = 0 : (void)keycode;
 	(keycode == 65307) ? e->key.echap = 0 : (void)keycode;
+	(keycode == 53) ? e->key.echap = 0 : (void)keycode;
 	(keycode == 125) ? e->key.decal_down = 0 : (void)keycode;
 	(keycode == 126) ? e->key.decal_up = 0 : (void)keycode;
 	(keycode == 124) ? e->key.decal_right = 0 : (void)keycode;

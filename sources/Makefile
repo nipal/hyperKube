@@ -6,7 +6,7 @@
 #    By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/05 01:32:20 by jpirsch           #+#    #+#              #
-#    Updated: 2016/03/24 03:20:30 by fjanoty          ###   ########.fr        #
+#    Updated: 2016/09/27 04:22:11 by fjanoty          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 		gcc -o $(NAME) $(FLAGS) $(OBJ) -I ../includes -L ../libft/ -lft \
 		-L ../c_maths -lc_maths \
-		-L /usr/lib/ -lmlx -lm -lX11 -lXext
+		-lmlx -framework OpenGL -framework AppKit
+	#	-L /usr/lib/ -lmlx -lm -lX11 -lXext
 
 
 $(OBJ):

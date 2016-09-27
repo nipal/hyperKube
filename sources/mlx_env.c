@@ -6,7 +6,7 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 04:08:06 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/09/18 07:48:42 by fjanoty          ###   ########.fr       */
+/*   Updated: 2016/09/27 06:02:01 by fjanoty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	env(int deg)
 	t_cam	*cam;
 
 	e.deg = deg;
-//	if (!(e.ang = (double*)malloc(sizeof(double) * deg)))
+//	if (!(e.ang = (double*)malloc(sizeof(double) * ((deg - 1) * deg) / 2)))
 //		return ;
 	e.rot_x = (20.0 / 360.0)  * 2 * M_PI;
 	e.rot_y = (20.0 / 360.0) * 2 * M_PI;

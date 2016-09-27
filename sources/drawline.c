@@ -6,7 +6,7 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 14:38:59 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/09/18 14:28:43 by fjanoty          ###   ########.fr       */
+/*   Updated: 2016/09/27 06:30:36 by fjanoty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "libft.h"
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 //void	adapt_point(t_cam *c, t_matrix ***pt, int size_x, int size_y);
 
@@ -228,9 +229,25 @@ void	draw_link4d(t_env *e, t_matrix **vertice)
 	}
 }
 */
+
+void	increm_rot_auto(int deg, double *ang)
+{
+	int	i;
+	int	max;
+
+	i = 0;
+	max = (deg - 1) * deg / 2;
+	while (i < max)
+	{
+		ang[i] += (float)(rand() % 10 + i) / 2000.0;
+		i++;
+	}
+}
+
 void	main_work(t_env *e)
 {
 	e->list_pt = creat_vertice_degn(e->deg);
+	increm_rot_auto(e->deg, e->ang);
 	rotate_vertice_degn(e->list_pt, e->ang, e->cam, e->deg);	
 //	define_link_degn(e->list_pt, e->deg);
 	draw_link_degn(e, e->list_pt, e->deg);
