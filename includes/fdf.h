@@ -6,7 +6,7 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 02:21:11 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/09/27 06:02:24 by fjanoty          ###   ########.fr       */
+/*   Updated: 2016/09/27 09:40:45 by fjanoty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <errno.h>
 # include <string.h>
 
-# define SIZE_Y 640
-# define SIZE_X 640
+# define SIZE_Y 1920
+# define SIZE_X 1080
 
 # define R 0
 # define G 1

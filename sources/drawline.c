@@ -6,7 +6,7 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 14:38:59 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/09/27 06:30:36 by fjanoty          ###   ########.fr       */
+/*   Updated: 2016/09/27 12:40:09 by fjanoty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,7 @@ void	increm_rot_auto(int deg, double *ang)
 	max = (deg - 1) * deg / 2;
 	while (i < max)
 	{
-		ang[i] += (float)(rand() % 10 + i) / 2000.0;
+		ang[i] += powf(-1, i) * (float)(max + i) / 10000.0;
 		i++;
 	}
 }
@@ -258,6 +258,6 @@ void	main_work(t_env *e)
 //	define_link(e->list_pt);
 //	draw_link4d(e, e->list_pt);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-	mlx_do_sync(e->mlx);
+//	mlx_do_sync(e->mlx);
 //	free_vertice(&(e->list_pt));
 }

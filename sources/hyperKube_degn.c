@@ -6,7 +6,7 @@
 /*   By: fjanoty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 06:47:13 by fjanoty           #+#    #+#             */
-/*   Updated: 2016/09/27 06:47:16 by fjanoty          ###   ########.fr       */
+/*   Updated: 2016/09/27 12:27:38 by fjanoty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,7 +231,7 @@ void	draw_link_degn(t_env *e, t_matrix **vertice, int deg)
 	int			i;
 	int			j;
 	int			id;
-	int			coef;
+//	int			coef;
 	t_matrix	*c1;
 	t_matrix	*c2;
 	t_matrix	*mat_line;
@@ -248,9 +248,9 @@ void	draw_link_degn(t_env *e, t_matrix **vertice, int deg)
 		j = 0;
 		while (j < deg)
 		{
-			coef = ((i & (1 << j)) == 0) ? 1 : -1; 
-			id = i + (coef * (1 << j));
-			if ((they_out(vertice[i], vertice[id]))
+//			coef = ((i & (1 << j)) == 0) ? 1 : -1; 
+			id = i + ((1 << j));
+			if (i & (1 << j) || (they_out(vertice[i], vertice[id]))
 				|| (!(mat_line = init_mat_line(vertice[i], vertice[id], c1, c2))))
 				;//dprintf(1, "i:%d	j:%d\n", i, j);
 			else
